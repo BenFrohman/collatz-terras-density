@@ -4,6 +4,7 @@ Author: Benjamin Stanley Frohman
 License: Apache-2.0
 
 Terras inclusion. Not the binomial tail. Not the covering claim.
+The bad-class branch is `2 ^ k ≤ 3 ^ m`, not the negation by rfl.
 -/
 
 import TerrasDensity.Basic
@@ -51,7 +52,7 @@ theorem inclusion_of_affine (k n m a : Nat)
     have hdrop := drop_of_affine n k m a hk hpow himg hlt
     exact Nat.not_le_of_gt hdrop (hS k hk (Nat.le_refl k))
   · left
-    exact hpow
+    exact Nat.le_of_not_gt hpow
 
 theorem terras_inclusion (k n m a : Nat) (hk : 0 < k) :
     TerrasInclusion k n m a := by
