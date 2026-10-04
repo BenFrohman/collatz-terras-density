@@ -4,7 +4,6 @@ Author: Benjamin Stanley Frohman
 License: Apache-2.0
 
 Terras inclusion. Not the binomial tail. Not the covering claim.
-The bad-class branch is `2 ^ k ≤ 3 ^ m`, not the negation by rfl.
 -/
 
 import TerrasDensity.Basic
@@ -30,14 +29,15 @@ theorem drop_of_affine (n k m a : Nat)
     (himg : iter k n * 2 ^ k = 3 ^ m * n + a)
     (hbig : a < (2 ^ k - 3 ^ m) * n) :
     iter k n < n := by
+  have hsub : 3 ^ m + (2 ^ k - 3 ^ m) = 2 ^ k := Nat.add_sub_of_le (Nat.le_of_lt hpow)
   have hmul : iter k n * 2 ^ k < n * 2 ^ k := by
     calc
       iter k n * 2 ^ k = 3 ^ m * n + a := himg
       _ < 3 ^ m * n + (2 ^ k - 3 ^ m) * n := Nat.add_lt_add_left hbig _
-      _ = 2 ^ k * n := by
-        have hsub : 3 ^ m + (2 ^ k - 3 ^ m) = 2 ^ k := Nat.add_sub_of_le (Nat.le_of_lt hpow)
-        rw [Nat.add_mul, hsub]
-      _ = n * 2 ^ k := Nat.mul_comm _ _
+      _ = n * 3 ^ m + n * (2 ^ k - 3 ^ m) := by
+          rw [Nat.mul_comm (3 ^ m) n, Nat.mul_comm (2 ^ k - 3 ^ m) n]
+      _ = n * (3 ^ m + (2 ^ k - 3 ^ m)) := by rw [← Nat.mul_add]
+      _ = n * 2 ^ k := by rw [hsub]
   exact Nat.lt_of_mul_lt_mul_right hmul
 
 theorem inclusion_of_affine (k n m a : Nat)
