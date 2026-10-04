@@ -25,7 +25,7 @@ def TerrasInclusion (k n m a : Nat) : Prop :=
       BadClass k m ∨ UnderBound k m a n
 
 theorem drop_of_affine (n k m a : Nat)
-    (hk : 0 < k) (hpow : 3 ^ m < 2 ^ k)
+    (_hk : 0 < k) (hpow : 3 ^ m < 2 ^ k)
     (himg : iter k n * 2 ^ k = 3 ^ m * n + a)
     (hbig : a < (2 ^ k - 3 ^ m) * n) :
     iter k n < n := by
@@ -47,10 +47,11 @@ theorem inclusion_of_affine (k n m a : Nat)
     BadClass k m ∨ UnderBound k m a n := by
   by_cases hpow : 3 ^ m < 2 ^ k
   · right
-    by_contra hbig
-    have hlt : a < (2 ^ k - 3 ^ m) * n := by omega
-    have hdrop := drop_of_affine n k m a hk hpow himg hlt
-    exact Nat.not_le_of_gt hdrop (hS k hk (Nat.le_refl k))
+    by_cases hle : (2 ^ k - 3 ^ m) * n ≤ a
+    · exact hle
+    · have hlt : a < (2 ^ k - 3 ^ m) * n := Nat.lt_of_not_le hle
+      have hdrop := drop_of_affine n k m a hk hpow himg hlt
+      exact False.elim (Nat.not_le_of_gt hdrop (hS k hk (Nat.le_refl k)))
   · left
     exact Nat.le_of_not_gt hpow
 

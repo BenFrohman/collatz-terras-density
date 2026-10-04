@@ -4,6 +4,7 @@ Author: Benjamin Stanley Frohman
 License: Apache-2.0
 
 Pascal tail for the Terras count. Not a covering claim.
+`Nat.pow_succ` is `a ^ (n + 1) = a ^ n * a`.
 -/
 
 namespace TerrasDensity
@@ -19,9 +20,9 @@ theorem two_pow_le_three_pow (n : Nat) : 2 ^ n ≤ 3 ^ n := by
   | zero => decide
   | succ n ih =>
     calc
-      2 ^ (n + 1) = 2 * 2 ^ n := by rw [Nat.pow_succ]
-      _ ≤ 3 * 2 ^ n := Nat.mul_le_mul_right _ (by decide)
-      _ ≤ 3 * 3 ^ n := Nat.mul_le_mul_left _ ih
+      2 ^ (n + 1) = 2 ^ n * 2 := by rw [Nat.pow_succ]
+      _ ≤ 3 ^ n * 2 := Nat.mul_le_mul_right _ ih
+      _ ≤ 3 ^ n * 3 := Nat.mul_le_mul_left _ (by decide)
       _ = 3 ^ (n + 1) := by rw [Nat.pow_succ]
 
 theorem tail_le (n s : Nat) : tail n s * 2 ^ s ≤ 3 ^ n := by
@@ -37,15 +38,17 @@ theorem tail_le (n s : Nat) : tail n s * 2 ^ s ≤ 3 ^ n := by
       have hsplit : tail (n + 1) (s + 1) * 2 ^ (s + 1)
           = tail n s * 2 ^ (s + 1) + tail n (s + 1) * 2 ^ (s + 1) := by
         simp [tail, Nat.add_mul]
-      have hpow : 2 ^ (s + 1) = 2 * 2 ^ s := by rw [Nat.pow_succ]
-      have hfirst : tail n s * 2 ^ (s + 1) ≤ 2 * 3 ^ n := by
-        rw [hpow, ← Nat.mul_assoc]
-        exact Nat.mul_le_mul_left 2 h1
+      have hpow : 2 ^ (s + 1) = 2 ^ s * 2 := by rw [Nat.pow_succ]
+      have hfirst : tail n s * 2 ^ (s + 1) ≤ 3 ^ n * 2 := by
+        rw [hpow]
+        calc
+          tail n s * (2 ^ s * 2) = tail n s * 2 ^ s * 2 := by rw [Nat.mul_assoc]
+          _ ≤ 3 ^ n * 2 := Nat.mul_le_mul_right 2 h1
       have hsum : tail n s * 2 ^ (s + 1) + tail n (s + 1) * 2 ^ (s + 1)
-          ≤ 2 * 3 ^ n + 3 ^ n := Nat.add_le_add hfirst h2
-      have hthree : 2 * 3 ^ n + 3 ^ n = 3 ^ (n + 1) := by
+          ≤ 3 ^ n * 2 + 3 ^ n := Nat.add_le_add hfirst h2
+      have hthree : 3 ^ n * 2 + 3 ^ n = 3 ^ (n + 1) := by
         rw [Nat.pow_succ]
         omega
-      exact le_trans (le_of_eq hsplit) (le_trans hsum (le_of_eq hthree))
+      exact Nat.le_trans (Nat.le_of_eq hsplit) (Nat.le_trans hsum (Nat.le_of_eq hthree))
 
 end TerrasDensity

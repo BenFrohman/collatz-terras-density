@@ -4,6 +4,8 @@ Author: Benjamin Stanley Frohman
 License: Apache-2.0
 
 DensityZero NeverDrops is the Terras statement. It is not RemainingLemma.
+The implication below uses the covering axiom. It does not discharge it.
+`1` does not drop below itself, so it is an exception, not a contradiction.
 -/
 
 import TerrasDensity.Basic
@@ -22,28 +24,32 @@ def DensityZero (P : Nat → Prop) : Prop :=
 def densityZeroNeverDrops : Prop :=
   DensityZero NeverDrops
 
-/-- The covering assumption implies the density statement, because arrival at 1
-    is a descent for `n > 1`. This uses the axiom. It does not discharge it. -/
+/-- The covering assumption implies the density statement. Arrival at 1 is a
+    descent only for `n > 1`. `0` and `1` are the exception list. -/
 theorem density_of_covering (h : RemainingLemma) : densityZeroNeverDrops := by
   intro c hc
-  refine ⟨1, ?_⟩
-  intro X _
-  refine ⟨[0, 1], ?_, by omega⟩
-  intro n hn hnever
-  have htree := h n (by omega)
-  rcases htree with ⟨k, hk⟩
-  have hk0 : 0 < k := by
-    cases k with
-    | zero => simp [iter] at hk; omega
-    | succ _ => exact Nat.succ_pos _
-  have hlt : iter k n < n := by
-    rw [hk]
-    have : n ≠ 0 := by omega
-    have : n ≠ 1 := by
-      intro h1
-      simp [h1, NeverDrops, iter] at hnever
+  refine ⟨2 * c, ?_⟩
+  intro X hX
+  refine ⟨[0, 1], ?_, ?_⟩
+  · intro n hn hnever
+    have h01 : n = 0 ∨ n = 1 := by
+      by_cases h0 : n = 0
+      · exact Or.inl h0
+      · have hpos : 0 < n := Nat.pos_of_ne_zero h0
+        rcases h n hpos with ⟨k, hk⟩
+        cases k with
+        | zero =>
+          right
+          simpa [iter] using hk
+        | succ k =>
+          have hle : n ≤ iter (k + 1) n := hnever (k + 1) (Nat.succ_pos _)
+          have : n ≤ 1 := by simpa [hk] using hle
+          omega
+    rcases h01 with rfl | rfl
+    · simp
+    · simp
+  · have hlen : ([0, 1] : List Nat).length * c = 2 * c := by simp
     omega
-  exact False.elim (Nat.not_le_of_gt hlt (hnever k hk0))
 
 theorem density_from_assumption : densityZeroNeverDrops :=
   density_of_covering remaining_lemma_assumption

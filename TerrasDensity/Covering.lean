@@ -4,8 +4,10 @@ Author: Benjamin Stanley Frohman
 License: Apache-2.0
 
 Vendored covering equation from BenFrohman/collatz-covering-claim.
-An assumption, not a proof. Not implied by the Terras inclusion.
+Same equation, this namespace. An assumption, not a proof.
 -/
+
+import TerrasDensity.Basic
 
 namespace TerrasDensity
 
@@ -15,7 +17,7 @@ def InReverseTree (n : Nat) : Prop :=
 def RemainingLemma : Prop :=
   ∀ n : Nat, 0 < n → InReverseTree n
 
-/-- The covering equation. Imported from collatz-covering-claim. Not proved here. -/
+/-- The covering equation. Same statement as collatz-covering-claim. Not proved here. -/
 axiom remaining_lemma_assumption : RemainingLemma
 
 theorem covering_from_assumption :
