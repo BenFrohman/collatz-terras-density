@@ -1,8 +1,9 @@
 /-
 Copyright (c) 2026 Benjamin Stanley Frohman. All rights reserved.
-Author: Benjamin Stanley Frohman
-License: Apache-2.0
-
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Benjamin Stanley Frohman
+-/
+/-
 DensityZero NeverDrops is the Terras statement. It is not RemainingLemma.
 The implication below uses the covering axiom. It does not discharge it.
 `1` does not drop below itself, so it is an exception, not a contradiction.

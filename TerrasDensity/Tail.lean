@@ -1,8 +1,9 @@
 /-
 Copyright (c) 2026 Benjamin Stanley Frohman. All rights reserved.
-Author: Benjamin Stanley Frohman
-License: Apache-2.0
-
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Benjamin Stanley Frohman
+-/
+/-
 Pascal tail for the Terras count. Not a covering claim.
 `Nat.pow_succ` is `a ^ (n + 1) = a ^ n * a`.
 -/
