@@ -9,3 +9,7 @@ This repository contains one equation: finite stopping time has density one.
 `binomial_tail` counts bad parity words. It does not say every positive integer reaches 1.
 
 The covering claim is not in this repository. It lives in `collatz-covering-claim`.
+
+## License
+
+Copyright (c) 2026 Benjamin Stanley Frohman. Licensed under the Apache License, Version 2.0 (see [`LICENSE`](LICENSE) and [`NOTICE`](NOTICE)).
