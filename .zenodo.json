@@ -1,0 +1,33 @@
+{
+  "title": "Finite-Prefix Terras Parity-Vector Stopping-Time Density Bounds in Lean 4",
+  "upload_type": "publication",
+  "publication_type": "preprint",
+  "publication_date": "2026-10-04",
+  "version": "1.0.0",
+  "license": "Apache-2.0",
+  "doi": "10.5281/zenodo.23629484",
+  "creators": [
+    {
+      "name": "Frohman, Benjamin Stanley",
+      "affiliation": "Independent Researcher",
+      "orcid": "0009-0006-7068-3718"
+    }
+  ],
+  "keywords": [
+    "Collatz conjecture",
+    "Terras stopping time",
+    "parity vectors",
+    "natural density",
+    "Lean 4",
+    "Mathlib"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/BenFrohman/collatz-terras-density",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    }
+  ],
+  "notes": "Origin Provenance: 2026-10-04 15:45:31 CDT (Git Initial Commit). Copyright (c) 2026 Benjamin Stanley Frohman. All rights reserved. Licensed under the Apache License, Version 2.0 (http://www.apache.org/licenses/LICENSE-2.0).",
+  "description": "<p>Zero-<code>sorry</code> 7-module Lean 4 formalization (<code>TerrasDensity</code>) of the Terras finite-stopping-time parity-vector structure, binomial tail counts of bad parity words, and residue class covering bounds for the 3n+1 map.</p>"
+}

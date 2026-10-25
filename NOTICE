@@ -1,9 +1,15 @@
-collatz-terras-density
+collatz-terras-density — Finite-Prefix Terras Parity-Vector Stopping-Time Density Bounds in Lean 4
 Copyright 2026 Benjamin Stanley Frohman
-
-Author: Benjamin Stanley Frohman <frohmanbenjamin@gmail.com>
 ORCID: https://orcid.org/0009-0006-7068-3718
-GitHub: https://github.com/BenFrohman
+GitHub: https://github.com/BenFrohman/collatz-terras-density
+Zenodo DOI: https://doi.org/10.5281/zenodo.23629484
+Origin Provenance: 2026-10-04 15:45:31 CDT (Git Initial Commit)
 
-This repository is offered under the Apache License, Version 2.0.
-See LICENSE for the full Apache License, Version 2.0 text.
+This product includes software, formal Lean 4 proofs, and mathematical manuscripts developed by
+Benjamin Stanley Frohman (frohmanbenjamin@gmail.com).
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this work except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
