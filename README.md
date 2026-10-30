@@ -21,7 +21,9 @@ This repository contains one equation: finite stopping time has density one.
 
 `binomial_tail` counts bad parity words. It does not say every positive integer reaches 1.
 
-The covering claim is not in this repository. It lives in `collatz-covering-claim`.
+The covering claim is not proved here; it lives in `collatz-covering-claim`. It appears only as the named hypothesis `RemainingLemma` (open; equivalent to Collatz), taken as an explicit argument by `covering_from_assumption` and `density_from_assumption`.
+
+`lake build` is clean: 0 `sorry`, no custom axioms, and all 27 theorems depend only on `propext`, `Classical.choice`, `Quot.sound`.
 
 ## License
 

@@ -5,7 +5,7 @@ Authors: Benjamin Stanley Frohman
 -/
 /-
 DensityZero NeverDrops is the Terras statement. It is not RemainingLemma.
-The implication below uses the covering axiom. It does not discharge it.
+The implication below takes the covering claim `RemainingLemma` as a hypothesis. It does not discharge it.
 `1` does not drop below itself, so it is an exception, not a contradiction.
 -/
 
@@ -52,7 +52,7 @@ theorem density_of_covering (h : RemainingLemma) : densityZeroNeverDrops := by
   · have hlen : ([0, 1] : List Nat).length * c = 2 * c := by simp
     omega
 
-theorem density_from_assumption : densityZeroNeverDrops :=
-  density_of_covering remaining_lemma_assumption
+theorem density_from_assumption (h : RemainingLemma) : densityZeroNeverDrops :=
+  density_of_covering h
 
 end TerrasDensity
