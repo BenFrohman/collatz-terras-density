@@ -1,6 +1,6 @@
 # Terras density
 
-[![Lean certificate](https://github.com/BenFrohman/collatz-terras-density/actions/workflows/certify.yml/badge.svg)](https://github.com/BenFrohman/collatz-terras-density/actions/workflows/certify.yml)
+[![lean.yml](https://github.com/BenFrohman/collatz-terras-density/actions/workflows/lean.yml/badge.svg?branch=main)](https://github.com/BenFrohman/collatz-terras-density/actions/workflows/lean.yml)
 
 <!-- ZENODO-PROVENANCE-HEADER -->
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23629484.svg)](https://doi.org/10.5281/zenodo.23629484)
