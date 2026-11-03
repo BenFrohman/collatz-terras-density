@@ -1,0 +1,28 @@
+name: Lean certificate
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  certify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install elan (toolchain pinned by lean-toolchain = leanprover/lean4:v4.34.0)
+        run: |
+          curl -sSfL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+
+      - name: Build
+        run: lake build
+      - name: Axiom audit
+        run: lake env lean AxiomAudit.lean 2>&1 | tee axioms.txt
+      - name: Check axioms are standard only
+        run: |
+          test -s axioms.txt
+          if grep -vE "depends on axioms: \[(propext|Classical\.choice|Quot\.sound)(, (propext|Classical\.choice|Quot\.sound))*\]$|does not depend on any axioms$" axioms.txt | grep -q .; then
+            echo "Non-standard axiom output:"; cat axioms.txt; exit 1; fi
+      - name: No sorry / no axiom declarations
+        run: python3 scripts/check_no_sorry.py
