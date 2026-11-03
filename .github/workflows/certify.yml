@@ -18,7 +18,8 @@ jobs:
       - name: Build
         run: lake build
       - name: Axiom audit
-        run: lake env lean AxiomAudit.lean 2>&1 | tee axioms.txt
+        run: |
+          lake env lean AxiomAudit.lean 2>&1 | awk '/^[ \t]/{sub(/^[ \t]+/," ");printf "%s",./finish.sh;next} NR>1{print ""} {printf "%s",./finish.sh} END{print ""}' | tee axioms.txt
       - name: Check axioms are standard only
         run: |
           test -s axioms.txt
