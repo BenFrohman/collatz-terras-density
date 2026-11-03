@@ -19,11 +19,15 @@ jobs:
         run: lake build
       - name: Axiom audit
         run: |
-          lake env lean AxiomAudit.lean 2>&1 | awk '/^[ \t]/{sub(/^[ \t]+/," ");printf "%s",./finish.sh;next} NR>1{print ""} {printf "%s",./finish.sh} END{print ""}' | tee axioms.txt
+          set -o pipefail
+          lake env lean AxiomAudit.lean 2>&1 | awk '/^[ \t]/{sub(/^[ \t]+/," ");printf "%s",$0;next} NR>1{print ""} {printf "%s",$0} END{print ""}' | tee axioms.txt
       - name: Check axioms are standard only
         run: |
           test -s axioms.txt
-          if grep -vE "depends on axioms: \[(propext|Classical\.choice|Quot\.sound)(, (propext|Classical\.choice|Quot\.sound))*\]$|does not depend on any axioms$" axioms.txt | grep -q .; then
+          OK='depends on axioms: \[(propext|Classical\.choice|Quot\.sound)(, (propext|Classical\.choice|Quot\.sound))*\]$|does not depend on any axioms$'
+          n=$(grep -c "^#print axioms" AxiomAudit.lean); m=$(grep -E "^'" axioms.txt | grep -cE "$OK" || true)
+          echo "audited $n declarations, $m with standard axioms only"
+          if [ "$n" -ne "$m" ] || grep -iE "error|warning: declaration uses" axioms.txt; then
             echo "Non-standard axiom output:"; cat axioms.txt; exit 1; fi
       - name: No sorry / no axiom declarations
         run: python3 scripts/check_no_sorry.py
