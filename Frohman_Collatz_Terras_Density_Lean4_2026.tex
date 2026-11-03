@@ -15,6 +15,8 @@
 \small \texttt{frohmanbenjamin@gmail.com}}
 \date{Origin Provenance: October 4, 2026 (15:45:31 CDT) \\ \small Repository: \texttt{BenFrohman/collatz-terras-density} \quad|\quad Licensed under Apache-2.0}
 
+\usepackage{longtable}
+\usepackage{url}
 \begin{document}
 \maketitle
 
@@ -31,4 +33,41 @@ We present a zero-\texttt{sorry}, 7-module Lean 4 formalization (\texttt{TerrasD
 
 \section*{License and Copyright}
 Copyright \copyright\ 2026 Benjamin Stanley Frohman. All rights reserved. Licensed under the Apache License, Version 2.0 (\url{http://www.apache.org/licenses/LICENSE-2.0}).
+\appendix
+\section{Verification certificate}\label{app:verification-certificate}
+
+The formal development was machine-checked as follows.
+
+{\raggedright
+\begin{itemize}
+\item Repository:\\ {\footnotesize\url{https://github.com/BenFrohman/collatz-terras-density}}
+\item Verified commit:\\ {\footnotesize\texttt{5716a1c12568299742be9ea35f9a0b40d141fa21}}
+\item Lean toolchain: \texttt{leanprover/lean4:v4.34.0}
+\item Mathlib: none (the development depends only on Lean core)
+\item Continuous integration run (build, axiom audit, \texttt{sorry}/\texttt{axiom} scan; passed):\\ {\footnotesize\url{https://github.com/BenFrohman/collatz-terras-density/actions/runs/41570505495}}
+\item SHA-256 of the GitHub source tarball of the verified commit, downloaded twice with identical result:\\ {\footnotesize\url{https://github.com/BenFrohman/collatz-terras-density/archive/5716a1c12568299742be9ea35f9a0b40d141fa21.tar.gz}}\\
+{\footnotesize\texttt{b86807210a58f26059b6380451d65a7f0a3a067424cd078d9910269434561f9f}}
+\end{itemize}\par}
+
+The tarball hash refers to the verified commit rather than to a release tag, since a document cannot contain the hash of an archive that includes itself. The Lean sources are unchanged between that commit and the release tag.
+
+\textbf{The development contains no \texttt{sorry} and no user-declared axioms.} Every one of the 9 theorems and lemmas listed below depends only on Lean's standard axioms \texttt{propext}, \texttt{Classical.choice} and \texttt{Quot.sound} (or on none). The table is the verbatim output of \texttt{lake env lean AxiomAudit.lean} (\texttt{\#print axioms}) on the verified commit.
+
+{\footnotesize
+\begin{longtable}{p{0.55\linewidth}p{0.38\linewidth}}
+\hline
+Lean declaration & \texttt{\#print axioms} \\
+\hline\endhead
+\path{TerrasDensity.not_neverDrops_iff} & \texttt{[propext, Classical.choice, Quot.sound]} \\
+\path{TerrasDensity.covering_from_assumption} & \texttt{(no axioms)} \\
+\path{TerrasDensity.density_from_assumption} & \texttt{[propext, Quot.sound]} \\
+\path{TerrasDensity.density_of_covering} & \texttt{[propext, Quot.sound]} \\
+\path{TerrasDensity.drop_of_affine} & \texttt{[propext, Classical.choice, Quot.sound]} \\
+\path{TerrasDensity.inclusion_of_affine} & \texttt{[propext, Classical.choice, Quot.sound]} \\
+\path{TerrasDensity.terras_inclusion} & \texttt{[propext, Classical.choice, Quot.sound]} \\
+\path{TerrasDensity.tail_le} & \texttt{[propext, Quot.sound]} \\
+\path{TerrasDensity.two_pow_le_three_pow} & \texttt{(no axioms)} \\
+\hline
+\end{longtable}}
+
 \end{document}
