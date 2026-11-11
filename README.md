@@ -35,3 +35,7 @@ Copyright (c) 2026 Benjamin Stanley Frohman. Licensed under the Apache License, 
 
 - [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23629483.svg)](https://doi.org/10.5281/zenodo.23629483) Finite-Prefix Terras Parity-Vector Stopping-Time Density Bounds in Lean 4 — all versions: [10.5281/zenodo.23629483](https://doi.org/10.5281/zenodo.23629483); latest version: [10.5281/zenodo.23629484](https://doi.org/10.5281/zenodo.23629484)
 - [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23867504.svg)](https://doi.org/10.5281/zenodo.23867504) Finite-Prefix Terras Parity-Vector Stopping-Time Density Bounds in Lean 4 — all versions: [10.5281/zenodo.23867504](https://doi.org/10.5281/zenodo.23867504); latest version: [10.5281/zenodo.23905277](https://doi.org/10.5281/zenodo.23905277)
+
+## Citation
+
+Cite this work with [`CITATION.cff`](CITATION.cff) (GitHub's "Cite this repository" button). Zenodo DOI: [10.5281/zenodo.23629484](https://doi.org/10.5281/zenodo.23629484).
