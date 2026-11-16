@@ -1,0 +1,18 @@
+'TerrasDensity.not_neverDrops_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TerrasDensity.covering_from_assumption' does not depend on any axioms
+'TerrasDensity.density_from_assumption' depends on axioms: [propext, Quot.sound]
+'TerrasDensity.density_of_covering' depends on axioms: [propext, Quot.sound]
+'TerrasDensity.iter.eq_1' does not depend on any axioms
+'TerrasDensity.iter.eq_2' does not depend on any axioms
+'TerrasDensity.iter.eq_def' does not depend on any axioms
+'TerrasDensity.drop_of_affine' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TerrasDensity.inclusion_of_affine' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TerrasDensity.terras_inclusion' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TerrasDensity.tail.eq_1' does not depend on any axioms
+'TerrasDensity.tail.eq_2' does not depend on any axioms
+'TerrasDensity.tail.eq_3' does not depend on any axioms
+'TerrasDensity.tail.eq_4' does not depend on any axioms
+'TerrasDensity.tail.eq_def' does not depend on any axioms
+'TerrasDensity.tail_le' depends on axioms: [propext, Quot.sound]
+'TerrasDensity.two_pow_le_three_pow' does not depend on any axioms
+AUDIT PASS: 17 theorems in 5 modules depend only on propext, Classical.choice, Quot.sound (or on no axioms)
