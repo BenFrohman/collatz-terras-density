@@ -7,6 +7,10 @@
 [![License: Apache-2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![ORCID](https://img.shields.io/badge/ORCID-0009--0006--7068--3718-brightgreen.svg)](https://orcid.org/0009-0006-7068-3718)
 
+## Kernel certificate
+
+[certificates/CERTIFICATE.md](certificates/CERTIFICATE.md): commit `7ebcb33`, `leanprover/lean4:v4.34.0`. `lake build` passes; the sorry/axiom scan finds 0 hits; **17 theorems depend only on `propext`, `Classical.choice`, `Quot.sound`**; 6 of 6 modules replayed through the kernel, 0 failures ([CI run](https://github.com/BenFrohman/collatz-terras-density/actions/runs/43937911835)).
+
 > **Author:** Benjamin Stanley Frohman ([ORCID: 0009-0006-7068-3718](https://orcid.org/0009-0006-7068-3718))  
 > **Origin Provenance:** `2026-10-04 15:45:31 CDT (Git Initial Commit)`  
 > **Zenodo Archive & DOI:** [`10.5281/zenodo.23629484`](https://doi.org/10.5281/zenodo.23629484) ([Zenodo Record `23629484`](https://zenodo.org/records/23629484))  
