@@ -9,3 +9,9 @@ import TerrasDensity.Tail
 import TerrasDensity.Inclusion
 import TerrasDensity.Covering
 import TerrasDensity.Density
+
+/-!
+# TerrasDensity
+
+Machine-checked Lean 4 module.
+-/

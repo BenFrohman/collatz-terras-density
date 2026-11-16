@@ -3,6 +3,7 @@ Copyright (c) 2026 Benjamin Stanley Frohman. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Benjamin Stanley Frohman
 -/
+
 /-
 DensityZero NeverDrops is the Terras statement. It is not RemainingLemma.
 The implication below takes the covering claim `RemainingLemma` as a hypothesis. It does not discharge it.
@@ -11,6 +12,12 @@ The implication below takes the covering claim `RemainingLemma` as a hypothesis.
 
 import TerrasDensity.Basic
 import TerrasDensity.Covering
+
+/-!
+# TerrasDensity.Density
+
+Machine-checked Lean 4 module.
+-/
 
 namespace TerrasDensity
 
